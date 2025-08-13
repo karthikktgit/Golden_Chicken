@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Golden Chicken Mediterranean Restaurant – St. Peters, MO</title>
+   <meta name="description" content="Fresh, Authentic, and Halal Mediterranean food in St. Peters, MO. Featuring shawarma, gyros, kebabs, and more.">
+
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow:wght@400;700&family=Cinzel:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.css">
+
+
+
+
+   <style>
+       .header-logo {
+           transition: height 0.7s cubic-bezier(.4,0,.2,1), margin 0.7s cubic-bezier(.4,0,.2,1);
+       }
+       .header-title {
+           transition: font-size 0.7s cubic-bezier(.4,0,.2,1), letter-spacing 0.7s cubic-bezier(.4,0,.2,1);
+       }
+       /* Shrink header, logo, and title more on scroll */
+       .main-header.shrink {
+           padding: 0.15rem 0 !important;
+       }
+       .main-header.shrink .header-logo {
+           height: 40px !important;
+           margin-right: 8px !important;
+       }
+       .main-header.shrink .header-title {
+           font-size: 2.3rem !important;
+           letter-spacing: 1.5px;
+       }
+       @media (max-width: 767px) {
+           .main-header.shrink .header-logo {
+               height: 26px !important;
+               margin-right: 5px !important;
+           }
+           .main-header.shrink .header-title {
+               font-size: 1.6rem !important;
+           }
+       }
+       /* Header Title Sizing */
+       .header-title {
+           font-family: 'Abril Fatface', serif;
+           font-size: 3.2rem;
+           color: #C9A14A;
+           background: linear-gradient(90deg, #ffe066 0%, #ffd700 40%, #c9a14a 100%);
+           -webkit-background-clip: text;
+           -webkit-text-fill-color: transparent;
+           background-clip: text;
+           font-weight: 900;
+           letter-spacing: 2.5px;
+           /* Softer gold and brown glow for glossy effect */
+           text-shadow:
+               0 2px 8px #ffe066,
+               0 4px 16px #c9a14a,
+               0 1px 0 #a0522d;
+           line-height: 1.1;
+       }
+       @media (max-width: 767px) {
+           .header-title {
+               font-size: 2.3rem;
+           }
+       }
+       /* Popup Overlay Styles */
+       #popup-overlay {
+           position: fixed;
+           top: 0; left: 0; right: 0; bottom: 0;
+           width: 100vw;
+           height: 100vh;
+           background: rgba(44,44,44,0.82);
+           z-index: 3000;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           transition: opacity 1.2s cubic-bezier(.4,0,.2,1);
+           opacity: 1;
+       }
+       #popup-overlay.fade-out {
+           opacity: 0;
+           pointer-events: none;
+       }
+       #popup-logo {
+           max-width: 90vw;
+           max-height: 60vh;
+           width: 420px;
+           height: auto;
+           box-shadow: none;
+           border-radius: 0;
+           background: none;
+           padding: 0;
+           object-fit: contain;
+       }
+       /* --- CSS STYLES --- */
+      
+       /* 1. Variables and Global Styles */
+       :root {
+           --bg-soft-cream: #F8F5F0;
+           --text-charcoal: #2C2C2C;
+           --accent-golden: #C9A14A;
+           --header-red-brown: #A0522D;
+           --font-main: 'Barlow', Arial, sans-serif;
+           --font-title: 'Playfair Display', 'Cinzel', serif;
+           --font-menu-item: 'Barlow', sans-serif;
+       }
+
+
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+       html {
+           scroll-behavior: smooth;
+       }
+       body {
+           font-family: var(--font-main);
+           background-color: var(--bg-soft-cream);
+           color: var(--text-charcoal);
+           line-height: 1.6;
+       }
+       h1, h2, h3, h4 {
+           line-height: 1.2;
+           font-family: var(--font-main);
+           letter-spacing: 1px;
+       }
+
+
+       .container {
+           width: 90%;
+           max-width: 1200px;
+           margin: 0 auto;
+       }
+
+
+       /* 2. Header and Navigation */
+       .main-header {
+           background-color: rgba(255,255,255,0.65);
+           backdrop-filter: blur(8px);
+           padding: 0.7rem 0;
+           border-bottom: none !important;
+           box-shadow: none !important;
+           position: sticky;
+           top: 0;
+           z-index: 1000;
+           transition: padding 0.3s cubic-bezier(.4,0,.2,1);
+       }
+
+
+       .header-content {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+       }
+      
+       .header-logo {
+           height: 180px;
+           width: auto;
+           margin-right: 18px;
+           display: block;
+           transition: height 0.3s cubic-bezier(.4,0,.2,1);
+       }
+
+
+       .main-header.shrink .header-logo {
+           height: 110px !important;
+       }
+
+
+@media (max-width: 767px) {
+    .main-header .header-logo {
+        height: 90px; /* Bigger for mobile */
+        margin-right: 7px;
+    }
+    .main-header.shrink .header-logo {
+        height: 70px !important; /* When scrolled */
+    }
+}
+
+
+       .main-nav ul {
+           list-style: none;
+           display: flex;
+           gap: 2rem;
+       }
+
+
+       .main-nav a {
+           text-decoration: none;
+           color: var(--text-charcoal);
+           font-family: var(--font-menu-item);
+           font-size: 16px;
+           font-weight: 700;
+           transition: color 0.3s ease;
+       }
+
+
+       .main-nav a:hover {
+           color: var(--accent-golden);
+       }
+      
+
+
+
+
+       /* 3. Hero Section */
+       .hero {
+           background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80') center center/cover no-repeat fixed;
+           background-attachment: fixed;
+           background-size: cover;
+           background-repeat: no-repeat;
+           position: relative;
+           min-height: 220px;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+       }
+
+
+       .hero-content {
+           background: rgba(44,44,44,0.68);
+           border-radius: 12px;
+           padding: 0.3rem 1.2rem;
+           max-width: 90vw;
+           margin: 0 auto;
+           height: 2in;
+           min-height: 0;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           box-shadow: none;
+           color: #fff;
+       }
+       .hero-content h1, .hero-content p {
+           color: #fff !important;
+           text-shadow: 0 2px 8px rgba(44,44,44,0.45);
+       }
+
+
+       /* 4. General Section Styling */
+       .section {
+           padding: 80px 0;
+       }
+
+
+       .section-header {
+           font-family: var(--font-title);
+           font-size: 42px;
+           font-weight: 700;
+           color: var(--header-red-brown);
+           text-align: center;
+           margin-bottom: 50px;
+       }
+
+
+       /* 5. Menu Section */
+       .daily-specials {
+           background-color: #fff9e6;
+           border: 2px dashed var(--accent-golden);
+           padding: 2rem;
+           margin: 0 auto 50px auto;
+           max-width: 800px;
+           text-align: center;
+           border-radius: 8px;
+       }
+
+
+       .daily-specials h3 {
+           font-family: var(--font-menu-item);
+           color: var(--header-red-brown);
+           font-size: 2.1rem;
+           text-align: center;
+           margin-bottom: 1.1rem;
+           font-weight: 900;
+           letter-spacing: 1.2px;
+       }
+      
+       .daily-specials p {
+           font-size: 18px;
+       }
+      
+       /* Improved compact design for Today's Specials items */
+       .special-item-card {
+           display: flex;
+           align-items: flex-start;
+           gap: 0.7rem;
+           text-align: left;
+           padding-bottom: 0.6rem;
+           margin-bottom: 0.6rem;
+           border-bottom: 1px solid #e0d8c7;
+           background: none;
+       }
+       .special-item-card:last-child {
+           border-bottom: none;
+           margin-bottom: 0;
+           padding-bottom: 0;
+       }
+       .special-item-card img {
+           width: 90px;
+           height: 90px;
+           object-fit: cover;
+           border-radius: 9px;
+           flex-shrink: 0;
+           margin-top: 2px;
+       }
+       .special-item-card .menu-item-content {
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           flex: 1;
+           min-width: 0;
+           gap: 0.1rem;
+       }
+       .special-item-card .menu-item-header {
+           display: flex;
+           align-items: baseline;
+           gap: 0.4rem;
+           margin-bottom: 0.05rem;
+       }
+       .special-item-card .menu-item-name {
+           font-size: 1.35rem;
+           font-weight: 700;
+           color: #a0522d;
+           margin: 0;
+           white-space: nowrap;
+           overflow: hidden;
+           text-overflow: ellipsis;
+       }
+       .special-item-card .menu-item-price {
+           font-size: 1.35rem;
+           color: #8a5a13;
+           font-weight: 700;
+           margin-left: auto;
+           white-space: nowrap;
+       }
+       .special-item-card .menu-item-desc {
+           font-size: 1.18rem;
+           color: #555;
+           margin: 0.12rem 0 0 0;
+           white-space: normal;
+           overflow: hidden;
+           text-overflow: ellipsis;
+       }
+      
+       .menu-category details {
+           margin-bottom: 1.5rem;
+           border-bottom: 1px solid #ddd;
+       }
+      
+       .menu-category summary {
+           font-family: var(--font-title);
+           font-size: 28px;
+           color: var(--text-charcoal);
+           cursor: pointer;
+           padding: 1rem 0;
+           list-style: none;
+           display: flex;
+           align-items: center;
+           gap: 0.7rem;
+           user-select: none;
+           outline: none;
+           transition: background 0.2s;
+           border-radius: 8px;
+       }
+       .menu-category summary:hover, .menu-category summary:focus {
+           background: #f8f5f0;
+       }
+
+
+       .menu-category summary::-webkit-details-marker {
+            display: none;
+       }
+      
+       .menu-category summary::after {
+           content: '\f078';
+           font-family: 'Font Awesome 6 Free';
+           font-weight: 900;
+           font-size: 1.3rem;
+           color: #d2691e;
+           margin-left: 0.5rem;
+           transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+           display: inline-block;
+           animation: bounce 2.8s cubic-bezier(.4,0,.2,1) infinite;
+       }
+       @keyframes bounce {
+           0%, 100% { transform: translateY(0) scale(1.15); }
+           30% { transform: translateY(-5px) scale(1.15); }
+           50% { transform: translateY(0) scale(1.15); }
+           70% { transform: translateY(-2.5px) scale(1.15); }
+       }
+
+
+       .menu-category details[open] summary::after {
+           content: '\f077';
+           transform: scale(1.15); /* Keep scale consistent, remove rotate */
+       }
+
+
+       .menu-grid {
+           display: grid;
+           grid-template-columns: 1fr;
+           gap: 1.5rem; /* Increased gap for better spacing with images */
+           padding-top: 1rem;
+       }
+
+
+       .menu-item {
+           display: flex;
+           flex-direction: column;
+           text-align: left; /* Align text left for specials */
+       }
+      
+       .menu-item-header {
+           display: flex;
+           justify-content: space-between;
+           align-items: baseline;
+       }
+
+
+       .menu-item-name {
+           font-family: var(--font-menu-item);
+           font-weight: 700;
+           font-size: 18px;
+           color: var(--text-charcoal);
+       }
+      
+       .menu-item-price {
+           font-family: var(--font-menu-item);
+           font-weight: 700;
+           font-size: 18px;
+           color: #8a5a13;
+           text-shadow: 0 1px 2px #fff9e6, 0 0.5px 0 #fff;
+           white-space: nowrap;
+           padding-left: 1rem;
+       }
+
+
+       .menu-item-desc {
+           font-size: 16px;
+           color: #555;
+           margin-top: 5px;
+       }
+
+
+       /* 6. Gallery Section */
+       #gallery {
+            background-color: #fff;
+       }
+      
+       .gallery-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+           gap: 1rem;
+       }
+
+
+       .gallery-grid a {
+           display: block;
+           overflow: hidden;
+           border-radius: 8px;
+           box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+       }
+
+
+       .gallery-grid img {
+           width: 100%;
+           height: 250px;
+           object-fit: cover;
+           display: block;
+           transition: transform 0.4s ease;
+       }
+      
+       .gallery-grid a:hover img {
+           transform: scale(1.1);
+       }
+
+
+       /* Marquee Styles */
+       .gallery-marquee {
+           overflow: hidden;
+           width: 100%;
+           position: relative;
+           height: 260px;
+           margin-bottom: 2rem;
+       }
+       .gallery-marquee-track {
+           display: flex;
+           width: max-content;
+           animation: gallery-scroll 40s linear infinite;
+           gap: 1.2rem;
+           align-items: center;
+       }
+       .gallery-marquee img {
+           height: 250px;
+           width: 375px;
+           border-radius: 8px;
+           object-fit: cover;
+           box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+           flex-shrink: 0;
+           flex-grow: 0;
+           display: block;
+       }
+       @keyframes gallery-scroll {
+           0% { transform: translateX(0); }
+           100% { transform: translateX(-50%); }
+       }
+
+
+       .gallery-marquee.paused .gallery-marquee-track {
+           animation-play-state: paused !important;
+           cursor: grab;
+       }
+
+
+       /* 7. Contact Section */
+       .contact-grid {
+           display: grid;
+           grid-template-columns: 1fr;
+           gap: 2rem;
+           align-items: center;
+       }
+
+
+       .contact-info p {
+           font-size: 1.1rem;
+           margin-bottom: 1rem;
+       }
+
+
+       .contact-info i {
+           color: var(--accent-golden);
+           margin-right: 10px;
+           width: 20px;
+       }
+
+
+       .contact-info a {
+           color: var(--header-red-brown);
+           text-decoration: none;
+           font-weight: bold;
+       }
+      
+       .contact-info a:hover {
+           text-decoration: underline;
+       }
+
+
+       .map-embed iframe {
+           width: 100%;
+           height: 400px;
+           border: 0;
+           border-radius: 8px;
+           box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+       }
+
+
+       /* 8. Footer */
+       .main-footer {
+           background-color: var(--text-charcoal);
+           color: var(--bg-soft-cream);
+           padding: 3rem 0;
+           text-align: center;
+       }
+
+
+       .footer-content p {
+           margin-bottom: 1rem;
+       }
+
+
+       .social-icons a {
+           color: var(--bg-soft-cream);
+           font-size: 1.8rem;
+           margin: 0 1rem;
+           transition: color 0.3s ease;
+       }
+      
+       .social-icons a:hover {
+           color: var(--accent-golden);
+       }
+      
+       /* 9. Responsive Design */
+       @media (min-width: 768px) {
+           .hero-content h1 {
+    font-size: 3.5rem; 
+    font-weight: 900;
+    line-height: 1.2;
+           }
+           .menu-grid {
+               grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid for specials */
+               gap: 2rem 3rem;
+           }
+           .contact-grid {
+               grid-template-columns: 1fr 1fr;
+               gap: 3rem;
+           }
+       }
+      
+       @media (max-width: 767px) {
+           .header-content {
+               position: relative;
+           }
+           .main-header .header-logo {
+               height: 54px;
+               margin-right: 7px;
+           }
+           .main-header.shrink .header-logo {
+               height: 38px !important;
+           }
+           .main-nav {
+               display: none;
+               position: absolute;
+               top: 100%;
+               left: 0;
+               width: 100%;
+               background-color: #fff;
+               border-bottom: 3px solid var(--accent-golden);
+               z-index: 1100;
+           }
+           .main-nav.active {
+               display: block;
+           }
+           .main-nav ul {
+               flex-direction: column;
+               padding: 1rem 0;
+           }
+           .main-nav li {
+               text-align: center;
+               margin: 0.5rem 0;
+           }
+
+
+       }
+
+
+       /* Menu section background */
+       .section#menu {
+           background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80') center center/cover no-repeat fixed;
+           background-attachment: fixed;
+           background-size: cover;
+           background-repeat: no-repeat;
+           position: relative;
+           border-top: none !important;
+           box-shadow: none !important;
+           margin-top: 0 !important;
+           padding-top: 1.2rem;
+       }
+       .section#menu > .container {
+           background: rgba(255, 249, 230, 0.92); /* keep menu readable */
+           border-radius: 16px;
+           padding: 2rem 1.5rem;
+           box-shadow: 0 6px 32px rgba(44,44,44,0.07);
+       }
+
+
+       .header-hen-anim {
+ position: absolute;
+ left: 0;
+ bottom: 0;
+ height: 80px;
+ width: 120px;
+ z-index: 10;
+ pointer-events: none;
+ animation: hen-walk 12s linear infinite;
+}
+@keyframes hen-walk {
+ 0% { left: -120px; }
+ 10% { left: 10vw; }
+ 20% { left: 20vw; }
+ 30% { left: 30vw; }
+ 40% { left: 40vw; }
+ 50% { left: 50vw; }
+ 55% { left: 52vw; }
+ 60% { left: 54vw; }
+ 65% { left: 56vw; }
+ 70% { left: 58vw; }
+ 75% { left: 60vw; }
+ 80% { left: 70vw; }
+ 90% { left: 90vw; }
+ 100% { left: 110vw; }
+}
+.header-hen-peck {
+ animation: hen-peck 2s steps(2) infinite;
+ transform-origin: 50% 80%;
+}
+@keyframes hen-peck {
+ 0%, 80%, 100% { transform: rotate(0deg); }
+ 10%, 20% { transform: rotate(-18deg); }
+ 15%, 25% { transform: rotate(0deg); }
+}
+.header-egg {
+ opacity: 0;
+ transform: translateY(-10px);
+ animation: egg-lay 12s linear infinite;
+ animation-delay: 5.5s;
+ position: absolute;
+ left: 60px;
+ top: 60px;
+}
+@keyframes egg-lay {
+ 0%, 44% { opacity: 0; transform: translateY(-10px); }
+ 45% { opacity: 1; transform: translateY(0); }
+ 48% { opacity: 1; transform: translateY(30px) scaleY(1.2); }
+ 50% { opacity: 1; transform: translateY(40px) scaleY(0.9); }
+ 52% { opacity: 1; transform: translateY(30px) scaleY(1.1); }
+ 54% { opacity: 1; transform: translateY(40px) scaleY(1); }
+ 56%, 100% { opacity: 0; transform: translateY(40px) scaleY(1); }
+}
+@media (max-width: 767px) {
+ .header-hen-anim { height: 48px; width: 70px; }
+ .header-egg { left: 32px; top: 32px; }
+}
+   </style>
+   <script>
+   window.addEventListener('scroll', function() {
+       const header = document.querySelector('.main-header');
+       if (window.scrollY > 40) {
+           header.classList.add('shrink');
+       } else {
+           header.classList.remove('shrink');
+       }
+   });
+   </script>
+</head>
+<body>
+
+
+   <div id="popup-overlay">
+       <img src="Golden_Chicken_popup.png" alt="Golden Chicken Popup Logo" id="popup-logo">
+   </div>
+
+
+   <script>
+   // Popup fade out logic
+   window.addEventListener('DOMContentLoaded', function() {
+       setTimeout(function() {
+           document.getElementById('popup-overlay').classList.add('fade-out');
+       }, 800);
+   });
+   </script>
+
+
+   <header class="main-header">
+       <div class="container header-content">
+           <a href="#" style="display: flex; align-items: center; text-decoration: none;">
+               <img src="Golden_Chicken_logo.png" alt="Golden Chicken Logo" class="header-logo" style="margin-right: 12px;">
+           </a>
+           <div style="flex: 1; text-align: center;">
+               <a href="#" class="header-title" style="text-decoration: none;">Golden Chicken</a>
+           </div>
+           <div style="display: flex; gap: 1.2rem; align-items: center;">
+               <a href="https://www.google.com/maps/search/?api=1&query=632+Jungermann+Rd,+St.+Peters,+MO+63376" target="_blank" title="Location" style="color: var(--header-red-brown); font-size: 1.7rem;"><i class="fas fa-location-dot"></i></a>
+               <a href="#contact" title="Contact" style="color: var(--header-red-brown); font-size: 1.7rem;"><i class="fas fa-phone"></i></a>
+           </div>
+       </div>
+       <div class="header-hen-anim" aria-hidden="true">
+ <svg viewBox="0 0 120 80" width="120" height="80">
+   <!-- Body -->
+   <ellipse cx="60" cy="50" rx="32" ry="22" fill="#fffbe6" stroke="#a0522d" stroke-width="2"/>
+   <!-- Tail -->
+   <polygon points="30,50 18,38 32,44" fill="#ffe066" stroke="#a0522d" stroke-width="2"/>
+   <!-- Wing -->
+   <ellipse cx="70" cy="55" rx="12" ry="8" fill="#ffe066" stroke="#a0522d" stroke-width="1.5"/>
+   <!-- Head -->
+   <g class="header-hen-peck">
+     <ellipse cx="90" cy="38" rx="10" ry="10" fill="#fffbe6" stroke="#a0522d" stroke-width="2"/>
+     <!-- Beak -->
+     <polygon points="100,38 110,42 100,42" fill="#ffd700" stroke="#a0522d" stroke-width="1"/>
+     <!-- Comb -->
+     <ellipse cx="92" cy="28" rx="2.5" ry="3.5" fill="#d2691e"/>
+     <ellipse cx="88" cy="28" rx="2.5" ry="3.5" fill="#d2691e"/>
+     <!-- Eye -->
+     <circle cx="94" cy="38" r="1.5" fill="#222"/>
+   </g>
+   <!-- Legs -->
+   <line x1="65" y1="72" x2="65" y2="80" stroke="#a0522d" stroke-width="2"/>
+   <line x1="55" y1="72" x2="55" y2="80" stroke="#a0522d" stroke-width="2"/>
+ </svg>
+ <svg class="header-egg" viewBox="0 0 18 24" width="18" height="24">
+   <ellipse cx="9" cy="14" rx="8" ry="10" fill="#fffbe6" stroke="#c9a14a" stroke-width="2"/>
+ </svg>
+</div>
+   </header>
+
+
+   <main>
+
+
+       <section class="hero" id="home">
+           <div class="hero-content">
+               <h1>Fresh, Authentic, and Halal</h1>
+               <p>Open 11AM – 10PM Every Day | Call: 636-244-3031</p>
+           </div>
+       </section>
+
+
+       <section class="section" id="menu">
+           <div class="container">
+               <h2 class="section-header">Our Menu</h2>
+              
+               <div class="daily-specials">
+                   <h3>Today's Specials</h3>
+                   <p>Loading our delicious specials...</p>
+               </div>
+
+
+               <div class="menu-categories">
+              
+                   <div class="menu-category">
+                       <details open>
+                           <summary><h3>Wraps & Sandwiches</h3></summary>
+                           <div class="menu-grid">
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Gyro</h4>
+                                       <span class="menu-item-price">$9.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Beef/Lamb, onions, tomatoes, lettuce, tzatziki sauce</p>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Chicken Gyro</h4>
+                                       <span class="menu-item-price">$9.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Chicken, onions, tomatoes, lettuce, tzatziki sauce</p>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Beef Shawarma</h4>
+                                       <span class="menu-item-price">$10.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Beef, tomatoes, parsley, hummus, pickles, pickled turnips, tahini sauce</p>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Chicken Shawarma</h4>
+                                       <span class="menu-item-price">$9.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Chicken, garlic sauce, pickles</p>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Falafel</h4>
+                                       <span class="menu-item-price">$7.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Falafel, hummus, pickles, lettuce, cabbage, tahini salad</p>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Kebab</h4>
+                                       <span class="menu-item-price">$13.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Choice of Shish, Kufta, or Chicken Kebab wrap</p>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Burger</h4>
+                                       <span class="menu-item-price">$9.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Lettuce, tomatoes, onions, pickles, cheese, golden sauce</p>
+                               </div>
+                           </div>
+                       </details>
+                   </div>
+
+
+                   <div class="menu-category">
+                        <details>
+                           <summary><h3>Mediterranean Bowls</h3></summary>
+                           <div class="menu-grid">
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Chicken Shawarma Plate</h4>
+                                       <span class="menu-item-price">$14.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Served with rice, salad, hummus, and pita bread</p>
+                               </div>
+                                <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Beef Shawarma Plate</h4>
+                                       <span class="menu-item-price">$15.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Served with rice, salad, hummus, and pita bread</p>
+                               </div>
+                                <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Mixed Kebab Plate</h4>
+                                       <span class="menu-item-price">$18.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">One skewer of chicken, beef, and kufta kebab with rice and salad</p>
+                               </div>
+                                <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Falafel Plate</h4>
+                                       <span class="menu-item-price">$12.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Six pieces of falafel served with salad, hummus, and tahini sauce</p>
+                               </div>
+                           </div>
+                       </details>
+                   </div>
+
+
+                   <div class="menu-category">
+                       <details>
+                           <summary><h3>Wings</h3></summary>
+                           <div class="menu-grid">
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">6 Piece Wings</h4>
+                                       <span class="menu-item-price">$8.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Choice of sauce: Buffalo, BBQ, Garlic Parmesan, or Lemon Pepper</p>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">12 Piece Wings</h4>
+                                       <span class="menu-item-price">$15.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Choice of sauce: Buffalo, BBQ, Garlic Parmesan, or Lemon Pepper</p>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">20 Piece Wings</h4>
+                                       <span class="menu-item-price">$24.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Choice of sauce: Buffalo, BBQ, Garlic Parmesan, or Lemon Pepper</p>
+                               </div>
+                           </div>
+                       </details>
+                   </div>
+
+
+                   <div class="menu-category">
+                       <details>
+                           <summary><h3>Rotisserie</h3></summary>
+                            <div class="menu-grid">
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Whole Chicken</h4>
+                                       <span class="menu-item-price">$16.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Served with garlic sauce and pickles</p>
+                               </div>
+                                <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Half Chicken</h4>
+                                       <span class="menu-item-price">$9.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Served with garlic sauce and pickles</p>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Family Tray</h4>
+                                       <span class="menu-item-price">$49.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Whole rotisserie chicken, large rice, large salad, hummus, and pita</p>
+                               </div>
+                           </div>
+                       </details>
+                   </div>
+                  
+                   <div class="menu-category">
+                       <details>
+                           <summary><h3>Salads</h3></summary>
+                           <div class="menu-grid">
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Greek Salad</h4>
+                                       <span class="menu-item-price">$7.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Lettuce, tomato, cucumber, olives, feta, house dressing</p>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Fattoush Salad</h4>
+                                       <span class="menu-item-price">$7.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Lettuce, tomato, cucumber, crispy pita, sumac vinaigrette</p>
+                               </div>
+                           </div>
+                       </details>
+                   </div>
+                   <div class="menu-category">
+                       <details>
+                           <summary><h3>Sides</h3></summary>
+                           <div class="menu-grid">
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Fries</h4>
+                                       <span class="menu-item-price">$3.99</span>
+                                   </div>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Rice</h4>
+                                       <span class="menu-item-price">$3.99</span>
+                                   </div>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Pita Bread</h4>
+                                       <span class="menu-item-price">$1.50</span>
+                                   </div>
+                               </div>
+                           </div>
+                       </details>
+                   </div>
+                   <div class="menu-category">
+                       <details>
+                           <summary><h3>Sauces</h3></summary>
+                           <div class="menu-grid">
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Garlic Sauce</h4>
+                                       <span class="menu-item-price">$0.99</span>
+                                   </div>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Tahini Sauce</h4>
+                                       <span class="menu-item-price">$0.99</span>
+                                   </div>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Hot Sauce</h4>
+                                       <span class="menu-item-price">$0.99</span>
+                                   </div>
+                               </div>
+                           </div>
+                       </details>
+                   </div>
+                   <div class="menu-category">
+                       <details>
+                           <summary><h3>Drinks</h3></summary>
+                           <div class="menu-grid">
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Soda</h4>
+                                       <span class="menu-item-price">$1.99</span>
+                                   </div>
+                               </div>
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Bottled Water</h4>
+                                       <span class="menu-item-price">$1.49</span>
+                                   </div>
+                               </div>
+                           </div>
+                       </details>
+                   </div>
+                   <div class="menu-category">
+                       <details>
+                           <summary><h3>Desserts</h3></summary>
+                           <div class="menu-grid">
+                               <div class="menu-item">
+                                   <div class="menu-item-header">
+                                       <h4 class="menu-item-name">Baklava</h4>
+                                       <span class="menu-item-price">$3.99</span>
+                                   </div>
+                                   <p class="menu-item-desc">Traditional Mediterranean pastry with honey and nuts</p>
+                               </div>
+                           </div>
+                       </details>
+                   </div>
+
+
+               </div>
+           </div>
+       </section>
+
+
+       <section class="section" id="gallery">
+           <div class="container">
+               <h2 class="section-header">Photo Gallery</h2>
+               <div class="gallery-marquee">
+                   <div class="gallery-marquee-track">
+                       <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=1974&auto=format&fit=crop" alt="Shawarma wraps">
+                       <img src="https://images.unsplash.com/photo-1598515214211-89d3c7373014?q=80&w=1953&auto=format&fit=crop" alt="Chicken kebab skewers">
+                       <img src="https://images.unsplash.com/photo-1593931983999-923805f7a077?q=80&w=1974&auto=format&fit=crop" alt="Falafel platter">
+                       <img src="https://images.unsplash.com/photo-1551248429-40974011e553?q=80&w=2070&auto=format&fit=crop" alt="Mediterranean salad">
+                       <img src="https://images.unsplash.com/photo-1625938144952-4ed13a446e37?q=80&w=1965&auto=format&fit=crop" alt="Rotisserie chicken">
+                       <img src="https://images.unsplash.com/photo-1639548404502-a7370a2f4620?q=80&w=1974&auto=format&fit=crop" alt="Loaded fries">
+                       <img src="https://images.unsplash.com/photo-1608799359055-df16513ab414?q=80&w=1974&auto=format&fit=crop" alt="Baklava dessert">
+                       <img src="https://images.unsplash.com/photo-1627907222143-552f1113c27f?q=80&w=1974&auto=format&fit=crop" alt="Gyro platter">
+                       <!-- Duplicate images for seamless loop -->
+                       <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=1974&auto=format&fit=crop" alt="Shawarma wraps">
+                       <img src="https://images.unsplash.com/photo-1598515214211-89d3c7373014?q=80&w=1953&auto=format&fit=crop" alt="Chicken kebab skewers">
+                       <img src="https://images.unsplash.com/photo-1593931983999-923805f7a077?q=80&w=1974&auto=format&fit=crop" alt="Falafel platter">
+                       <img src="https://images.unsplash.com/photo-1551248429-40974011e553?q=80&w=2070&auto=format&fit=crop" alt="Mediterranean salad">
+                       <img src="https://images.unsplash.com/photo-1625938144952-4ed13a446e37?q=80&w=1965&auto=format&fit=crop" alt="Rotisserie chicken">
+                       <img src="https://images.unsplash.com/photo-1639548404502-a7370a2f4620?q=80&w=1974&auto=format&fit=crop" alt="Loaded fries">
+                       <img src="https://images.unsplash.com/photo-1608799359055-df16513ab414?q=80&w=1974&auto=format&fit=crop" alt="Baklava dessert">
+                       <img src="https://images.unsplash.com/photo-1627907222143-552f1113c27f?q=80&w=1974&auto=format&fit=crop" alt="Gyro platter">
+                   </div>
+               </div>
+           </div>
+       </section>
+
+
+       <section class="section" id="contact">
+           <div class="container">
+               <h2 class="section-header">Contact & Location</h2>
+               <div class="contact-grid">
+                   <div class="contact-info">
+                       <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong><br>632 Jungermann Rd, St. Peters, MO 63376</p>
+                       <p><i class="fas fa-phone"></i> <strong>Phone:</strong><br><a href="tel:636-244-3031">636-244-3031</a></p>
+                       <p><i class="fas fa-globe"></i> <strong>Website:</strong><br><a href="http://www.goldenchicken-stpeters.com" target="_blank">www.goldenchicken-stpeters.com</a></p>
+                       <p><i class="fas fa-clock"></i> <strong>Hours:</strong><br>Mon–Wed, Fri–Sun: 11AM–10PM<br>Closed Thursdays</p>
+                   </div>
+                   <div class="map-embed">
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3109.817454238585!2d-90.62121368465287!3d38.79017597958718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87df2f5a04323e27%3A0x6e9a656aa22f77e!2s632%20Jungermann%20Rd%2C%20St%20Peters%2C%20MO%2063376!5e0!3m2!1sen!2sus!4v1681498344673!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                   </div>
+               </div>
+           </div>
+       </section>
+
+
+   </main>
+  
+   <footer class="main-footer">
+       <div class="container footer-content">
+           <p><strong>Hours:</strong> Mon–Wed, Fri–Sun: 11AM–10PM</p>
+           <div class="social-icons">
+               <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+               <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+           </div>
+           <p style="margin-top: 2rem; font-size: 0.9rem;">© 2025 Golden Chicken Mediterranean Restaurant. All Rights Reserved.</p>
+       </div>
+   </footer>
+
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.js"></script>
+   <script>
+       // --- JAVASCRIPT ---
+
+
+
+
+       // 2. Gallery Lightbox Initialization
+       new SimpleLightbox('.gallery-grid a', {
+           captionDelay: 250,
+           animationSpeed: 250
+       });
+
+
+       // 3. Fetch and Display Today's Specials
+document.addEventListener('DOMContentLoaded', () => {
+ const specialsApiUrl = 'https://script.google.com/macros/s/AKfycbyG_6ece-7rCV0dwb6rlmiKd58XU3WrDSqNEGeNA-r3gK4-Xo_UwfYghLgV6setTiw9LQ/exec';
+ const specialsContainer = document.querySelector('.daily-specials');
+ if (!specialsContainer) return;
+
+
+ const placeholder = specialsContainer.querySelector('p');
+ if (placeholder) placeholder.textContent = 'Loading…';
+
+
+ const isTruthyOne = v => Number(String(v ?? '').trim()) === 1;
+
+
+ fetch(specialsApiUrl)
+   .then(r => {
+     if (!r.ok) throw new Error(`HTTP ${r.status}`);
+     return r.json();
+   })
+   .then(rows => {
+           // Show all items in sheet order
+           if (!rows || !rows.length) throw new Error('No specials');
+           specialsContainer.innerHTML = `<h3>Today's Specials</h3>`;
+           rows.forEach(item => {
+               specialsContainer.innerHTML += `
+                   <div class="special-item-card">
+                       ${item.image ? `<img src="${item.image}" alt="${item.name ?? ''}">` : `<div style="width:48px;height:48px;border-radius:7px;background:#e9e2d2;"></div>`}
+                       <div class="menu-item-content">
+                           <div class="menu-item-header">
+                               <h4 class="menu-item-name">${item.name ?? ''}</h4>
+                               <span class="menu-item-price">${item.price ? `$${Number(item.price).toFixed(2)}` : ''}</span>
+                           </div>
+                           <p class="menu-item-desc">${item.description ?? ''}</p>
+                       </div>
+                   </div>
+               `;
+           });
+   })
+   .catch(err => {
+     console.error(err);
+     if (placeholder) placeholder.textContent = 'Could not load specials. Please ask in the restaurant.';
+     else specialsContainer.insertAdjacentHTML('beforeend', `<p>Could not load specials. Please ask in the restaurant.</p>`);
+   });
+});
+   </script>
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+   const marquee = document.querySelector('.gallery-marquee');
+   const track = document.querySelector('.gallery-marquee-track');
+   let isDragging = false;
+   let startX, scrollLeft, animationWasPaused = false;
+
+
+   // Pause on hover (desktop)
+   marquee.addEventListener('mouseenter', () => {
+       marquee.classList.add('paused');
+   });
+   marquee.addEventListener('mouseleave', () => {
+       marquee.classList.remove('paused');
+   });
+
+
+   // Touch/drag to scroll (mobile)
+   marquee.addEventListener('touchstart', (e) => {
+       isDragging = true;
+       marquee.classList.add('paused');
+       startX = e.touches[0].pageX;
+       scrollLeft = track.scrollLeft || 0;
+       animationWasPaused = true;
+   });
+   marquee.addEventListener('touchmove', (e) => {
+       if (!isDragging) return;
+       const x = e.touches[0].pageX;
+       const walk = (startX - x);
+       track.scrollLeft = scrollLeft + walk;
+   });
+   marquee.addEventListener('touchend', () => {
+       isDragging = false;
+       setTimeout(() => marquee.classList.remove('paused'), 500);
+   });
+   // Optional: allow mouse drag for desktop
+   let mouseDown = false, mouseStartX, mouseScrollLeft;
+   marquee.addEventListener('mousedown', (e) => {
+       mouseDown = true;
+       marquee.classList.add('paused');
+       mouseStartX = e.pageX;
+       mouseScrollLeft = track.scrollLeft || 0;
+   });
+   marquee.addEventListener('mousemove', (e) => {
+       if (!mouseDown) return;
+       const x = e.pageX;
+       const walk = (mouseStartX - x);
+       track.scrollLeft = mouseScrollLeft + walk;
+   });
+   marquee.addEventListener('mouseup', () => {
+       mouseDown = false;
+       setTimeout(() => marquee.classList.remove('paused'), 500);
+   });
+   marquee.addEventListener('mouseleave', () => {
+       mouseDown = false;
+   });
+});
+</script>
+</body>
+</html>
+
